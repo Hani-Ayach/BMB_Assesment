@@ -5,7 +5,7 @@ A full-stack order-taking platform built with .NET microservices and Razor Pages
 - Product and Order APIs
 - API Gateway with routing, JWT Auth, Rate Limiting, Health Checks
 - Razor Frontend (UI)
-- Dockerized with PostgreSQL or In-Memory support
+- Dockerized with  In-Memory support
 - Serilog Structured Logging
 
 ---
