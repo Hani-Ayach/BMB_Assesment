@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrderService.Domain\OrderService.Domain.csproj" />
-    <ProjectReference Include="..\..\Shared\BmbPlatform.Shared\BmbPlatform.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\BmbPlatform.Shared\BMBAssesmentOT.Shared.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

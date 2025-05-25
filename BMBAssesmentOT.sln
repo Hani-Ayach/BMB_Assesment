@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{32D923AB-A1F0-415D-BAA4-ED3A8641F4FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BmbPlatform.Shared", "Shared\BmbPlatform.Shared\BmbPlatform.Shared.csproj", "{21F59E01-FE62-48C1-8E5C-1E288DD89382}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMBAssesmentOT.Shared", "Shared\BmbPlatform.Shared\BMBAssesmentOT.Shared.csproj", "{21F59E01-FE62-48C1-8E5C-1E288DD89382}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE1B1532-30BA-459E-919E-D3DAB58D804E}"
 	ProjectSection(SolutionItems) = preProject
