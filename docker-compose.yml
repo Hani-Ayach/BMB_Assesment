@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: bmb_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: bmbdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bmbnetwork
+
+  product-service:
+    build:
+      context: ./ProductService/ProductService.API
+    container_name: product_service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=bmbdb;Username=postgres;Password=secret
+    ports:
+      - "5001:80"
+    depends_on:
+      - postgres
+    networks:
+      - bmbnetwork
+
+  order-service:
+    build:
+      context: ./OrderService/OrderService.API
+    container_name: order_service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=bmbdb;Username=postgres;Password=secret
+      - ProductService__BaseUrl=http://product-service
+    ports:
+      - "5002:80"
+    depends_on:
+      - postgres
+      - product-service
+    networks:
+      - bmbnetwork
+
+  api-gateway:
+    build:
+      context: ./ApiGateway/ApiGateway
+    container_name: api_gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:80"
+    depends_on:
+      - product-service
+      - order-service
+    networks:
+      - bmbnetwork
+
+  frontend:
+    build:
+      context: ./Frontend/BMBAssesmentOT.Web
+    container_name: frontend_app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ApiGateway__BaseUrl=http://api-gateway
+    ports:
+      - "5003:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - bmbnetwork
+
+volumes:
+  postgres_data:
+
+networks:
+  bmbnetwork:
+    driver: bridge
