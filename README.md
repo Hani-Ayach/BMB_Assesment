@@ -31,4 +31,6 @@ A full-stack order-taking platform built with .NET microservices and Razor Pages
 +------------------------+
 
 
-The Microservice Application is Not Totaly finish 
+
+The Microservice Application is Not Totaly finish
+The Application need more testing, and some patterns implementations
